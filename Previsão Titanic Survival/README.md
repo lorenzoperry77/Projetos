@@ -35,4 +35,4 @@ Foram treinados e testados 7 algoritmos diferentes, avaliados com base em múlti
 1. Clona este repositório para a tua máquina local.
 2. Garante que tens as dependências instaladas (`pip install pandas numpy matplotlib seaborn scikit-learn xgboost`).
 3. Certifica-te de que o ficheiro de dados `titanic.csv` está localizado na raiz do projeto.
-4. Abre o ficheiro `ProjetoTitanic.ipynb` num ambiente Jupyter (Notebook ou Lab) e executa as células sequencialmente.
+4. Abre o ficheiro `ProjetoTitanic.ipynb` num ambiente Jupyter (Notebook) e executa as células sequencialmente.
