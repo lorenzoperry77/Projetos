@@ -45,3 +45,5 @@ Durante a fase experimental, foram testados e comparados quatro algoritmos de cl
 2. Garante que tens todas as dependências instaladas através do terminal:
    ```bash
    pip install pandas numpy matplotlib seaborn scikit-learn nltk
+3. Certifica-te de que o ficheiro enriquecido Formspring_augmented.csv se encontra na mesma pasta do teu notebook.
+4. Abre o ficheiro do projeto no Jupyter Notebook ou JupyterLab e executa as células sequencialmente para observar a limpeza, o treino e o teste em direto.
