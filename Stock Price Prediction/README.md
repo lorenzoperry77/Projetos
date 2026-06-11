@@ -266,7 +266,7 @@ Dense(1)
 ### Optimizer
 
 ```python
-Adam(learning_rate=0.001)
+Adam(learning_rate=0.0005)
 ```
 
 ### Loss Function
@@ -292,6 +292,30 @@ Maximum Error : $2.84
 R²         : 0.8892
 MAPE       : 0.74%
 ```
+
+# 📷 Visual Results
+
+## Historical Price and Trading Volume
+
+![Historical Data](results/historical_data.png)
+
+---
+
+## Technical Indicators
+
+![Technical Indicators](results/technical_indicators.png)
+
+---
+
+## Learning Curves
+
+![Learning Curves](results/learning_curves.png)
+
+---
+
+## Prediction Results
+
+![Forecast Results](results/forecast_results.png)
 
 ---
 
