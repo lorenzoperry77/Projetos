@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  Machine learning pipeline to predict the race classification of the 2026 Formula 1 Spanish Grand Prix at Circuit de Barcelona-Catalunya — trained exclusively on 2026 season data.
+  Machine learning pipeline to predict the race classification of the 2026 Formula 1 Spanish Grand Prix at Circuit de Barcelona-Catalunya, trained exclusively on 2026 season data.
 </p>
 
 ---
@@ -35,7 +35,7 @@ The goal of this project is to build a **complete machine learning pipeline** ca
 
 Unlike approaches that use historical seasons as training data, this project deliberately restricts itself to 2026 data only. This is intentional: the 2026 season introduces **new technical regulations**, meaning car performance hierarchies, tyre behaviour, and team competitiveness have fundamentally changed. Training on previous seasons would introduce noise and mislead the model.
 
-The pipeline covers the full data science workflow — extraction, engineering, normalisation, multi-model training with cross-validation, SHAP-based interpretability, and a final predicted race classification with professional F1-themed visualisations.
+The pipeline covers the full data science workflow: extraction, engineering, normalisation, multi-model training with cross-validation, SHAP-based interpretability, and a final predicted race classification with professional F1-themed visualisations.
 
 ---
 
@@ -145,18 +145,16 @@ DNF records are excluded from the training target to prevent the model from lear
 
 ## 🤖 Models & Metrics
 
-Four gradient-based and ensemble models were trained and compared using **TimeSeriesSplit cross-validation** (5 folds) — chosen over standard KFold to respect the temporal ordering of race rounds.
+Four gradient-based and ensemble models were trained and compared using **TimeSeriesSplit cross-validation** (5 folds), chosen over standard KFold to respect the temporal ordering of race rounds.
 
 ### Models evaluated
-
-| Model | CV MAE (avg) | CV MAE (std) |
-|---|---|---|
-| XGBoost | — | — |
-| LightGBM | — | — |
-| Gradient Boosting | — | — |
-| Random Forest | — | — |
-
-> *Values populated at runtime — the best model is selected automatically.*
+ 
+| Model | CV MAE (avg) | CV MAE (std) | |
+|---|---|---|---|
+| **XGBoost** | **2.7635** | **± 1.2573** | **🏆 Best** |
+| Random Forest | 2.9178 | ± 1.2781 | |
+| Gradient Boosting | 3.4749 | ± 1.6119 | |
+| LightGBM | 3.7699 | ± 1.9745 | |
 
 ### Evaluation metric
 
@@ -183,21 +181,23 @@ SHAP (SHapley Additive exPlanations) values are computed for the selected model 
 Predictions are generated using the **2026 Spanish GP qualifying grid** merged with each driver's accumulated season statistics.
 
 ### Predicted Top 10
-
+ 
 | POS | DRIVER | TEAM | GRID | Δ |
 |---|---|---|---|---|
-| 🥇 1 | — | — | — | — |
-| 🥈 2 | — | — | — | — |
-| 🥉 3 | — | — | — | — |
-| 4 | — | — | — | — |
-| 5 | — | — | — | — |
-| 6 | — | — | — | — |
-| 7 | — | — | — | — |
-| 8 | — | — | — | — |
-| 9 | — | — | — | — |
-| 10 | — | — | — | — |
-
-> *Table populated after running the notebook. Δ = positions gained (+) or lost (−) vs qualifying grid.*
+| 🥇 1 | Kimi ANTONELLI | Mercedes | P3 | ▲2 |
+| 🥈 2 | George RUSSELL | Mercedes | P1 | ▼1 |
+| 🥉 3 | Lando NORRIS | McLaren | P4 | ▲1 |
+| 4 | Lewis HAMILTON | Ferrari | P2 | ▼2 |
+| 5 | Max VERSTAPPEN | Red Bull Racing | P5 | — |
+| 6 | Oscar PIASTRI | McLaren | P7 | ▲1 |
+| 7 | Charles LECLERC | Ferrari | P10 | ▲3 |
+| 8 | Pierre GASLY | Alpine | P14 | ▲6 |
+| 9 | Isack HADJAR | Red Bull Racing | P6 | ▼3 |
+| 10 | Liam LAWSON | Racing Bulls | P8 | ▼2 |
+ 
+> Δ = positions gained (▲) or lost (▼) relative to qualifying grid. Model: **XGBoost** · CV MAE: **2.76 positions**.
+ 
+---
 
 ---
 
@@ -208,27 +208,27 @@ All visualisations use a custom **F1-themed dark design system** with official 2
 ### Model Evaluation
 Horizontal bar chart comparing CV MAE across all models, with a box plot showing score distribution across folds. The best model is highlighted in F1 red.
 
-![Model Comparison](model_comparison.png)
+![Model Comparison](Visualisations/model_comparison.png)
 
 ### Feature Importance (SHAP)
 SHAP mean absolute values per feature, showing which inputs most influence the predicted finishing position.
 
-![Feature Importance](feature_importance.png)
+![Feature Importance](Visualisations/feature_importance.png)
 
 ### Predicted Top 10 Classification
 A broadcast-style race classification table with team colour bars on each row, gold/silver/bronze podium highlighting, driver numbers, and grid delta indicators.
 
-![Top 10 Prediction](f1_barcelona_top10_prediction.png)
+![Top 10 Prediction](Visualisations/f1_barcelona_top10_prediction.png)
 
 ### Predicted Podium
 A visual podium block (P2 left, P1 centre, P3 right).
 
-![Podium](f1_barcelona_podium.png)
+![Podium](Visualisations/f1_barcelona_podium.png)
 
 ### Grid vs Predicted Finish (Scatter)
 Each driver plotted by qualifying position (X) vs predicted finish (Y), coloured by team. Drivers above the diagonal are predicted to gain places; below, to lose them.
 
-![Scatter](f1_barcelona_scatter.png)
+![Scatter](Visualisations/f1_barcelona_scatter.png)
 
 ---
 
